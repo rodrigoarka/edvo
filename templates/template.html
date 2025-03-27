@@ -1,0 +1,68 @@
+<form class="sheet" autocomplete="off">
+  <div class="actor-sheet">
+    <h1>{{actor.name}}</h1>
+
+    <label>Nome:</label>
+    <input type="text" name="name" value="{{actor.name}}" />
+
+    <label>Arcano Pessoal:</label>
+    <input type="text" name="arcano" value="{{actor.arcano}}" />
+
+    <label>Arquétipo:</label>
+    <input type="text" name="arquetipo" value="{{actor.system.arquetipo}}" />
+
+    <label>Idade:</label>
+    <input type="text" name="idade" value="{{actor.system.idade}}" />
+
+    <label>Gênero:</label>
+    <input type="text" name="genero" value="{{actor.system.genero}}" />
+
+    <label>Aparência:</label>
+    <textarea name="aparencia">{{actor.system.aparencia}}</textarea>
+
+    <h2>Atributos</h2>
+    <label>Corpus:</label>
+    <input
+      type="number"
+      name="corpus"
+      value="{{actor.system.atributos.corpus}}"
+    />
+    <label>Mens:</label>
+    <input type="number" name="mens" value="{{actor.system.atributos.mens}}" />
+    <label>Anima:</label>
+    <input
+      type="number"
+      name="anima"
+      value="{{actor.system.atributos.anima}}"
+    />
+    <label>Tempus:</label>
+    <input
+      type="number"
+      name="tempus"
+      value="{{actor.system.atributos.tempus}}"
+    />
+    <label>Umbra:</label>
+    <input
+      type="number"
+      name="umbra"
+      value="{{actor.system.atributos.umbra}}"
+    />
+
+    <h2>Mecânicas</h2>
+    <label>Desejos:</label>
+    <textarea name="desejos">{{actor.system.mecanicas.desejo}}</textarea>
+    <label>Traumas:</label>
+    <textarea name="traumas">{{actor.system.mecanicas.traumas}}</textarea>
+    <label>Cicatrizes:</label>
+    <textarea name="cicatrizes">{{actor.system.mecanicas.cicatrizes}}</textarea>
+    <label>Limitações Mágicas:</label>
+    <textarea name="limitacoes">{{actor.system.mecanicas.limitacoes}}</textarea>
+    <label>Conexões Importantes:</label>
+    <textarea name="conexoes">
+{{actor.system.mecanicas.conexõesImportantes}}</textarea
+    >
+    <label>Cartas:</label>
+    <textarea name="cartas">{{actor.system.mecanicas.cartas}}</textarea>
+    <button type="submit" class="save">Salvar</button>
+  </div>
+</form>

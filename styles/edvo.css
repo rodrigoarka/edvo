@@ -1,0 +1,497 @@
+/* Estilos Gerais para a Ficha */
+@import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Playwrite+AU+SA:wght@100..400&family=Unna:ital,wght@0,400;0,700;1,400;1,700&family=Yusei+Magic&display=swap');
+
+.actor-sheet {
+    /* background-color: #e7def5; */
+    background-image: url("../assets/imgs/fundo.webp");
+    /* Caminho para a imagem */
+    background-size: auto;
+    /* Faz com que o fundo cubra toda a área */
+    background-position: top center;
+    /* Centraliza a imagem */
+    background-repeat: repeat-y;
+    /* Evita repetição */
+    border: 2px solid #d1a655;
+    /* Bordas douradas */
+    border-radius: 10px;
+    /* Bordas arredondadas */
+    padding: 20px;
+    /* Espaçamento interno */
+    /* Fundo pastel roxo claro */
+    border: 2px solid #d1a655;
+    /* Bordas douradas */
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    color: #4b3b5c;
+    /* Roxo suave para o texto */
+    max-width: 100%;
+}
+
+.actor-sheet button:hover,
+.actor-sheet button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.actor-sheet .tabs>[data-tab].active {
+    text-shadow: none;
+}
+
+/* Títulos */
+.actor-sheet h1,
+.actor-sheet h2,
+.actor-sheet h3 {
+    font-size: 24px;
+    color: #d1a655;
+    /* Roxo pastel mais forte */
+    text-align: center;
+    border-bottom: 2px solid #d1a655;
+    /* Linha dourada no cabeçalho */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.actor-sheet h2 {
+
+    font-size: 22px;
+}
+
+.save {
+    background-color: #6c538e !important;
+    margin-top: 10px;
+    color: #fff;
+    border: none;
+    display: none;
+    /* Botão oculto por padrão */
+}
+
+.actor-owner .save {
+    display: block;
+    /* Mostrar o botão apenas para proprietários */
+}
+
+
+.save:hover {
+    background-color: #4c3b64;
+
+}
+
+.actor-sheet h3 {
+
+    font-size: 18px;
+}
+
+/* Labels */
+.actor-sheet label {
+    font-weight: bold;
+    color: #d1a655;
+    /* Dourado para destacar os labels */
+    margin-top: 10px;
+    display: block;
+}
+
+/* Inputs e Textareas */
+
+
+.actor-sheet input,
+.actor-sheet textarea {
+    width: 100%;
+    padding: 5px;
+    background-color: #eee6f2;
+    /* Fundo pastel roxo claro */
+    color: #4b3b5c;
+    /* Texto roxo suave */
+    border: none;
+    /* Remove bordas dos inputs */
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    /* Adiciona leve sombra */
+}
+
+.actor-sheet .attribute input {
+    justify-items: center;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Cabeçalho: Nome e Arcano lado a lado */
+.actor-sheet .header {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.actor-sheet .field-group {
+    flex: 1;
+}
+
+/* Atributos em Grade */
+.actor-sheet .attributes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.actor-sheet .attribute {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #eee6f2;
+    /* Fundo roxo claro */
+    border-radius: 4px;
+    padding: 10px;
+    flex-direction: column;
+}
+
+/* Botões Gerais */
+.actor-sheet button {
+    background-color: #d1a655;
+    /* Dourado */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.eco-roll {
+    margin-bottom: 20px;
+}
+
+.actor-sheet button:hover {
+    background-color: #b4904e;
+    /* Dourado mais escuro */
+}
+
+/* Botões Específicos (Excluir e Adicionar Trauma) */
+.actor-sheet button.add-trauma {
+    background-color: #b4904e;
+    /* Vermelho para destaque */
+    color: white;
+}
+
+.actor-sheet button.delete-trauma,
+.actor-sheet button.delete-desejo {
+    background-color: #ff5733;
+    /* Vermelho para destaque */
+    color: white;
+    width: 50px;
+}
+
+.actor-sheet button.add-trauma:hover,
+.actor-sheet button.delete-trauma:hover .actor-sheet button.add-desejo:hover,
+.actor-sheet button.delete-desejo:hover {
+    background-color: #c13e24;
+    /* Vermelho mais escuro */
+}
+
+/* Traumas */
+.actor-sheet .traumas,
+.actor-sheet .desejos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.actor-sheet .trauma-container,
+.actor-sheet .desejo-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.actor-sheet .trauma-item,
+.actor-sheet .desejo-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Área de ECO */
+.actor-sheet .eco-roll {
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Textareas */
+.actor-sheet .textarea-group {
+    margin-bottom: 10px;
+}
+
+.tarot-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tarot-container .flex {
+    display: flex;
+}
+
+.tarot-card {
+    background-color: rgb(255 255 255 / 90%);
+    /* Fundo suave */
+    border: 1px solid #d1a655;
+    /* Bordas douradas */
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.tarot-card label {
+    width: 100%;
+}
+
+.accordion-toggle {
+    background: none !important;
+    border: none;
+    color: #6c538e !important;
+    /* Roxo mágico */
+    cursor: pointer;
+    font-size: 14px;
+    right: 10px;
+    top: 10px;
+    width: 20px;
+    transform-origin: center;
+}
+
+.accordion-content {
+    display: none;
+    /* Esconde o conteúdo por padrão */
+    margin-top: 10px;
+    border-top: 1px solid #d1a655;
+    /* Linha dourada separando */
+    padding-top: 10px;
+    color: #4b3b5c;
+    /* Texto suave */
+}
+
+/*   
+
+.tarot-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.tarot-container .label {
+    font-size: 12px;
+}
+
+.tarot-card {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.tarot-warning {
+    margin-top: 10px;
+    font-weight: bold;
+} */
+
+.actor-sheet .actor-image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    flex-direction: column;
+    position: relative;
+    max-width: 220px;
+}
+
+.headerInclude {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    gap: 20px;
+    position: relative;
+
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+}
+
+.headerInclude img {
+    border-radius: 50%;
+    border: 5px solid #d1a655;
+    margin-bottom: 10px;
+}
+
+.headerInclude headers {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.headerInclude button {
+    font-size: 10px;
+    position: absolute;
+    bottom: 27px;
+}
+
+.actor-sheet button.select-image {
+    background-color: #d1a655;
+    /* Dourado */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.actor-sheet button.select-image:hover {
+    background-color: #b4904e;
+    /* Dourado mais escuro */
+}
+
+.actor-sheet .tabs {
+    display: flex;
+    border-bottom: 2px solid #d1a655;
+    justify-content: center;
+}
+
+.actor-sheet .tab {
+    display: none;
+    flex-direction: column;
+    margin-bottom: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+}
+
+.actor-sheet .tab.active {
+    display: flex;
+}
+
+.actor-sheet .tab-link {
+    background-color: #6c538e;
+    /* Roxo mágico */
+    color: white;
+    border: none;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.actor-sheet .tab-link:hover {
+    background-color: #4b3b5c;
+    /* Roxo mais escuro */
+}
+
+.actor-sheet .tab-link.active {
+    background-color: #d1a655;
+    /* Dourado */
+}
+
+.chat-card {
+    background-color: #f4f1f9;
+    /* Cor do fundo */
+    border: 2px solid #d1a655;
+    /* Borda dourada */
+    border-radius: 8px;
+    padding: 10px;
+    margin: 5px 0;
+    background-image: url(../assets/imgs/fundo.webp);
+}
+
+.chat-card .dark {
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+}
+
+.chat-card .card-header {
+    color: #b198d3;
+    padding: 5px;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.chat-card .card-header h3 {
+    font-family: "Boldonse", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.chat-card .card-content {
+    font-size: 12px;
+    display: flex;
+    color: #dfdfdf;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.chat-card .card-dices {
+
+    display: flex;
+    gap: 10px;
+    place-content: center;
+    font-family: "Yusei Magic", sans-serif;
+}
+
+.chat-card .card-dices .dices {
+    background: purple;
+    width: 50px;
+    height: 50px;
+    color: #ffc558;
+    text-align-last: center;
+    display: flex;
+    place-items: center;
+    place-content: center;
+    font-weight: bold;
+    font-size: 30px;
+    border-radius: 4px;
+    border: 2px solid;
+}
+
+.chat-card .card-dices .plus {
+    color: #ffc558;
+    text-align-last: center;
+    display: flex;
+    place-items: center;
+    place-content: center;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.chat-card .roll-desc {
+    display: flex;
+    font-size: 17px;
+    justify-content: center;
+    font-family: "Boldonse", system-ui;
+    letter-spacing: 1px;
+}
+
+.chat-card .roll-result {
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-card .roll-result .title {
+    font-weight: bold;
+    justify-content: center;
+    display: flex;
+    font-family: "Boldonse", system-ui;
+    color: #b198d3;
+    border-top: 1px solid;
+    padding-top: 10px;
+}
+
+.chat-card .roll-result .roll {
+    display: flex;
+    font-size: 50px;
+    font-weight: bold;
+    color: #ffc558;
+    background: rgba(0, 0, 0, 0.7);
+    margin: 10px 0;
+    border: 2px solid;
+    border-radius: 5px;
+    justify-content: center;
+    font-family: "Yusei Magic", sans-serif;
+}

@@ -1,0 +1,36 @@
+{
+    "type": "character",
+    "name": "",
+    "system": {
+        "arcano": "",
+        "arquetipo": "",
+        "idade": 0,
+        "genero": "",
+        "aparencia": "",
+        "bio": {
+            "type": "object",
+            "name": "bio",
+            "label": "Biografia",
+            "hint": "Campo de descrição com suporte a texto rico (TinyMCE).",
+            "richText": true,
+            "default": ""
+        },
+        "atributos": {
+            "corpus": 0,
+            "mens": 0,
+            "anima": 0,
+            "tempus": 0,
+            "umbra": 0
+        },
+        "mecanicas": {
+            "desejo": [],
+            "traumas": [],
+            "limitacoesMágicas": [],
+            "conexõesImportantes": [],
+            "cartas": {
+                "type": "array",
+                "default": []
+            }
+        }
+    }
+}

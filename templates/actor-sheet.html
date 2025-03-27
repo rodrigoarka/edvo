@@ -1,0 +1,963 @@
+<form class="sheet" autocomplete="off">
+  <div class="actor-sheet">
+    <!-- Cabeçalho -->
+
+    <div class="headerInclude">
+      <div class="actor-image">
+        <img src="{{actor.img}}" alt="Imagem do Personagem" />
+        <button type="button" class="select-image" title="Alterar Imagem">
+          Alterar Imagem
+        </button>
+      </div>
+
+      <div class="headers">
+        <div class="header">
+          <div class="field-group" style="width: 100%">
+            <label>Nome:</label>
+            <input type="text" name="name" value="{{actor.name}}" />
+          </div>
+          <div class="field-group" style="width: 100%">
+            <label>Arcano Pessoal:</label>
+            <input type="text" name="arcano" value="{{actor.system.arcano}}" />
+          </div>
+        </div>
+        <div class="header">
+          <div class="field-group" style="width: 100%">
+            <label>Arquétipo:</label>
+            <input
+              type="text"
+              name="arquetipo"
+              value="{{actor.system.arquetipo}}"
+            />
+          </div>
+          <div class="field-group" style="width: 100%">
+            <label>Idade:</label>
+            <input type="text" name="idade" value="{{actor.system.idade}}" />
+          </div>
+          <div class="field-group" style="width: 100%">
+            <label>Gênero:</label>
+            <input type="text" name="genero" value="{{actor.system.genero}}" />
+          </div>
+        </div>
+        <div class="header">
+          <div class="field-group" style="width: 100%">
+            <label>Aparência:</label>
+            <textarea name="aparencia">{{actor.system.aparencia}}</textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="tabs">
+      <button type="button" class="tab-link active" data-tab="tab-atributos">
+        Atributos
+      </button>
+      <button type="button" class="tab-link" data-tab="tab-mecanica">
+        Mecânica
+      </button>
+      <button type="button" class="tab-link" data-tab="tab-cartas">
+        Cartas
+      </button>
+      <button type="button" class="tab-link" data-tab="tab-bio">Bio</button>
+    </nav>
+    <!-- Abas -->
+    <div class="tabs-content">
+      <!-- Aba Atributos -->
+      <div id="tab-atributos" class="tab active">
+        <!-- Atributos -->
+        <h2>Atributos</h2>
+        <div class="attributes-grid">
+          <div class="attribute">
+            <label>Corpus:</label>
+            <div>
+              <input
+                type="number"
+                name="corpus"
+                data-attribute="corpus"
+                value="{{actor.system.atributos.corpus}}"
+              />
+              <button type="button" class="roll-dice" data-attribute="corpus">
+                🎲
+              </button>
+            </div>
+          </div>
+          <div class="attribute">
+            <label>Mens:</label>
+            <div>
+              <input
+                type="number"
+                name="mens"
+                data-attribute="mens"
+                value="{{actor.system.atributos.mens}}"
+              />
+              <button type="button" class="roll-dice" data-attribute="mens">
+                🎲
+              </button>
+            </div>
+          </div>
+          <div class="attribute">
+            <label>Anima:</label>
+            <div>
+              <input
+                type="number"
+                name="anima"
+                data-attribute="anima"
+                value="{{actor.system.atributos.anima}}"
+              />
+              <button type="button" class="roll-dice" data-attribute="anima">
+                🎲
+              </button>
+            </div>
+          </div>
+          <div class="attribute">
+            <label>Tempus:</label>
+            <div>
+              <input
+                type="number"
+                name="tempus"
+                data-attribute="tempus"
+                value="{{actor.system.atributos.tempus}}"
+              />
+              <button type="button" class="roll-dice" data-attribute="tempus">
+                🎲
+              </button>
+            </div>
+          </div>
+          <div class="attribute">
+            <label>Umbra:</label>
+            <div>
+              <input
+                type="number"
+                name="umbra"
+                data-attribute="umbra"
+                value="{{actor.system.atributos.umbra}}"
+              />
+              <button type="button" class="roll-dice" data-attribute="umbra">
+                🎲
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ECO -->
+        <h2>Eco</h2>
+        <div class="eco-roll">
+          <button type="button" class="roll-eco">🌟 Rolar ECO</button>
+        </div>
+      </div>
+
+      <!-- Aba Cartas -->
+      <div id="tab-mecanica" class="tab">
+        <!-- Mecânicas -->
+        <h2>Mecânicas</h2>
+        <div class="traumas">
+          <label>Traumas:</label>
+          <div class="trauma-container">
+            <div class="trauma-item">
+              <input
+                type="text"
+                name="trauma-1"
+                placeholder="Escreva um trauma..."
+              />
+            </div>
+          </div>
+          <button
+            type="button"
+            class="add-trauma"
+            title="Adicionar novo trauma"
+          >
+            +
+          </button>
+        </div>
+        <p class="trauma-warning" style="color: red; display: none">
+          Limite de 5 traumas atingido!
+        </p>
+        <div class="desejos">
+          <label>Desejos:</label>
+          <div class="desejo-container">
+            <div class="desejo-item">
+              <input
+                type="text"
+                name="desejo-1"
+                placeholder="Escreva um desejo..."
+              />
+            </div>
+          </div>
+          <button
+            type="button"
+            class="add-desejo"
+            title="Adicionar novo desejo"
+          >
+            +
+          </button>
+        </div>
+        <p class="desejo-warning" style="color: red; display: none">
+          Limite de 5 desejos atingido!
+        </p>
+
+        <div class="textarea-group">
+          <label>Limitações Mágicas:</label>
+          <textarea name="limitacoes">
+{{actor.system.mecanicas.limitacoes}}</textarea
+          >
+        </div>
+        <div class="textarea-group">
+          <label>Conexões Importantes:</label>
+          <textarea name="conexoes">
+{{actor.system.mecanicas.conexõesImportantes}}</textarea
+          >
+        </div>
+      </div>
+      <!-- Aba Cartas -->
+      <div id="tab-cartas" class="tab">
+        <h3>Cartas do Tarot</h3>
+        <p>Selecione entre 3 e 22 cartas:</p>
+        <div class="tarot-container">
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-louco"
+                name="cartas"
+                value="O Louco"
+              />
+              <label for="card-louco">O Louco</label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>O Louco - 0 (Bardo)</strong><br />
+                <strong>Conceitos:</strong> Ilusão / Mistério / Liberdade<br />
+                <strong>Descrição Geral:</strong> O Louco simboliza novos
+                começos, liberdade e a busca pela aventura. Ele é um viajante
+                sem medo, pronto para explorar o desconhecido e abraçar o
+                potencial de novas experiências. É uma carta de inocência e
+                espontaneidade, representando a capacidade de se libertar das
+                amarras do passado.<br />
+                <strong>Arcano Inicial:</strong> Liberdade é sua força. Você
+                obtém vantagem em ações que envolvem exploração, improvisação e
+                decisões ousadas.<br />
+                <strong>Utilização:</strong> O Louco pode ser usado para
+                embarcar em novas aventuras ou para assumir riscos. O jogador
+                pode utilizar a carta para inspirar o grupo a seguir um caminho
+                inesperado ou para provocar uma mudança súbita na situação.<br />
+                <strong>Narrativa:</strong> O grupo se encontra diante de um
+                precipício. Paulo usa O Louco, combinando com
+                “Romper/Enfraquecer/Ferir” (A Torre - XVI) para dar um salto
+                ousado em direção a uma nova jornada, levando o grupo,
+                explorando um novo território cheio de promessas e perigos (2d6
+                - 1).
+              </p>
+            </div>
+          </div>
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-mago"
+                name="cartas"
+                value="I. O Mago"
+              />
+              <label for="card-mago">I. O Mago</label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>O Mago - I</strong><br />
+                <strong>Conceitos:</strong> Criar / Nascer / Criatividade<br />
+                <strong>Descrição Geral:</strong> O Mago simboliza a
+                criatividade, o poder de transformar ideias em realidade, e o
+                domínio sobre os elementos. Embora seja uma carta voltada para
+                criação, sozinha ela representa a habilidade de visualizar e
+                planejar, mas necessita de outra força para manifestar
+                fisicamente algo. Ele é um manipulador de energias criativas e
+                um catalisador para magias mais potentes.<br />
+                <strong>Arcano Inicial:</strong> Criatividade é o seu forte,
+                você obtém vantagem em jogadas que o narrador considerar
+                criativas.<br />
+                <strong>Utilização:</strong> O Mago pode ser usado para preparar
+                uma ação futura ou complementar o uso de outra carta. Ele não
+                gera efeitos concretos sozinho, mas aumenta o impacto quando
+                usado com outras cartas.<br />
+                <strong>Narrativa:</strong> O grupo precisa atravessar um
+                deserto, e Camila, o personagem do jogador, visualiza uma
+                solução criativa. Ela combina a carta do Mago com a carta de
+                “Elementais” (A Temperança - XIV) para conjurar uma tempestade
+                de areia que bloqueia os inimigos e permite ao grupo avançar
+                (2d6 - 1).
+              </p>
+            </div>
+          </div>
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-sacerdotisa"
+                name="cartas"
+                value="II. A Sacerdotisa"
+              />
+              <label for="card-sacerdotisa">II. A Sacerdotisa</label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>A Sacerdotisa - II</strong><br />
+                <strong>Conceitos:</strong> Conhecimento / Denominação /
+                Segredos<br />
+                <strong>Descrição Geral:</strong> A Sacerdotisa é o símbolo do
+                mistério e do conhecimento oculto. Ela guarda os segredos do
+                universo e representa a sabedoria intuitiva. Está associada à
+                magia sutil, que acessa dimensões espirituais ou revela o que
+                está escondido.<br />
+                <strong>Arcano Inicial:</strong> Você pode perceber verdades
+                ocultas e ganhar vantagem em situações em que segredos ou
+                mistérios estão envolvidos.<br />
+                <strong>Utilização:</strong> A Sacerdotisa pode ser usada para
+                revelar informações escondidas ou acessar conhecimentos
+                secretos. Sozinha, ela permite intuições valiosas, mas seu poder
+                se expande quando combinada com outras cartas.<br />
+                <strong>Narrativa:</strong> Durante uma negociação tensa, o
+                jogador usa a Sacerdotisa para perceber que seu oponente está
+                escondendo algo. Ao combinar com “Sons” (O Julgamento - XX), ele
+                consegue ouvir as batidas aceleradas do coração da outra pessoa,
+                revelando sua mentira (2d6 - 1).
+              </p>
+            </div>
+          </div>
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-imperatriz"
+                name="cartas"
+                value="III. A Imperatriz"
+              />
+              <label for="card-imperatriz">III. A Imperatriz</label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>A Imperatriz - III</strong><br />
+                <strong>Conceitos:</strong> Cura / Fertilidade / Vida<br />
+                <strong>Descrição Geral:</strong> A Imperatriz simboliza a
+                fertilidade, abundância e vida. Ela é a mãe generosa que cultiva
+                a vida e traz harmonia ao ambiente. Sua energia está ligada à
+                cura e à nutrição.<br />
+                <strong>Arcano Inicial:</strong> Você obtém vantagem ao realizar
+                ações de cura, proteção ou em situações ligadas à
+                fertilidade.<br />
+                <strong>Utilização:</strong> A Imperatriz pode ser usada para
+                curar ou fortalecer os outros, promover o crescimento de plantas
+                ou gerar vida em terrenos estéreis. Seu poder está relacionado à
+                restauração.<br />
+                <strong>Narrativa:</strong> O grupo precisa curar um membro
+                gravemente ferido. O jogador usa a Imperatriz junto com a carta
+                “Vegetal e Planta” (A Lua - XVIII) para conjurar uma erva
+                milagrosa que restaura a saúde do companheiro (2d6 - 1).
+              </p>
+            </div>
+          </div>
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-imperador"
+                name="cartas"
+                value="IV. O Imperador"
+              />
+              <label for="card-imperador">IV. O Imperador</label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>Conceitos:</strong> Controlar / Atar / Liderar<br />
+                <strong>Descrição Geral:</strong> O Imperador é a figura da
+                autoridade, controle e estrutura. Ele representa a capacidade de
+                impor ordem e direção sobre o caos. Sua energia é a de
+                liderança, decisão e responsabilidade.<br />
+                <strong>Arcano Inicial:</strong> Você ganha vantagem ao exercer
+                liderança ou controle sobre outras pessoas ou situações.<br />
+                <strong>Utilização:</strong> O Imperador é usado para
+                estabelecer ordem ou controlar forças em conflito. Pode ser uma
+                carta chave para controlar a direção de um grupo ou manter algo
+                sob controle.<br />
+                <strong>Narrativa:</strong> Diante de um motim em uma cidade, o
+                jogador usa o Imperador para restaurar a ordem. Ele combina a
+                carta com “Proteger/Guardar” (A Justiça - VIII) ordenando a
+                todos a procurarem abrigo, para garantir a segurança dos
+                cidadãos (2d6 - 1).
+              </p>
+            </div>
+          </div>
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-hierofante"
+                name="cartas"
+                value="V. O Hierofante"
+              />
+              <label for="card-hierofante">V. O Hierofante </label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>Conceitos:</strong> Comunicação / Separação / Vontade<br />
+                <strong>Descrição Geral:</strong> O Hierofante é o guardião das
+                tradições, rituais e sistemas de crença. Ele representa a
+                conexão com o conhecimento divino e o poder da fé. Está ligado à
+                denominação, espiritualidade e conhecimento religioso.<br />
+                <strong>Arcano Inicial:</strong> Você obtém vantagem em
+                situações que envolvem rituais, fé ou a comunicação com o
+                divino.<br />
+                <strong>Utilização:</strong> O Hierofante pode ser usado para
+                acessar conhecimento religioso ou espiritual, realizar rituais
+                sagrados ou conectar-se com entidades divinas. Ele é uma ponte
+                entre o mundo mortal e o divino.<br />
+                <strong>Narrativa:</strong> O grupo precisa desfazer uma
+                maldição. O jogador usa o Hierofante junto com a carta
+                “Espírito/Alma/Necromancia” (A Morte - XII) para realizar um
+                ritual de purificação que exorciza a entidade maligna (2d6 - 1).
+              </p>
+            </div>
+          </div>
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-amantes"
+                name="cartas"
+                value="VI. Os Amantes"
+              />
+              <label for="card-amantes">VI. Os Amantes</label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>Conceitos:</strong> Fortalecer / Restaurar /
+                Estimular<br />
+                <strong>Descrição Geral:</strong> Os Amantes representam a
+                união, a escolha e a dualidade. Eles simbolizam a conexão
+                emocional profunda, mas também os conflitos que surgem nas
+                decisões difíceis entre caminhos opostos.<br />
+                <strong>Arcano Inicial:</strong> Você ganha vantagem em
+                situações que envolvem escolhas difíceis ou relacionamentos
+                significativos.<br />
+                <strong>Utilização:</strong> Os Amantes podem ser usados para
+                unir forças ou causar divisões. Eles são particularmente úteis
+                em situações que envolvem decisões emocionais, laços afetivos ou
+                parcerias.<br />
+                <strong>Narrativa:</strong> O grupo precisa escolher entre
+                salvar uma vila ou seguir em sua missão. O jogador usa Os
+                Amantes e a carta “Destino” (A Roda da Fortuna - X) para
+                entender as consequências de sua escolha (2d6 - 1).
+              </p>
+            </div>
+          </div>
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-carro"
+                name="cartas"
+                value="VII. O Carro"
+              />
+              <label for="card-carro">VII. O Carro</label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>Conceitos:</strong> Deslocar / Viajar / Alcançar<br />
+                <strong>Descrição Geral:</strong> O Carro simboliza o movimento,
+                a ação e a determinação. Ele representa a capacidade de seguir
+                em frente e vencer obstáculos com força de vontade. Está ligado
+                à viagem e à superação de desafios.<br />
+                <strong>Arcano Inicial:</strong> Você obtém vantagem ao realizar
+                ações que envolvam movimento ou superação de barreiras.<br />
+                <strong>Utilização:</strong> O Carro é usado para se mover
+                rapidamente, viajar ou romper bloqueios. Ele permite que o
+                jogador avance ou escape de situações difíceis com agilidade.<br />
+                <strong>Narrativa:</strong> O grupo está preso em uma cidade
+                sitiada. O jogador usa O Carro com a carta “Animal” (A Força -
+                XI) para conjurar alguns cavalos velozes que os levam em
+                segurança para fora da cidade (2d6 - 1).
+              </p>
+            </div>
+          </div>
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-justica"
+                name="cartas"
+                value="VIII. A Justiça"
+              />
+              <label for="card-justica">VIII. A Justiça</label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>Conceitos:</strong> Proteger / Guardar / Equilibrar<br />
+                <strong>Descrição Geral:</strong> A Justiça representa o
+                equilíbrio e a verdade. Ela é imparcial e está conectada às
+                leis, à justiça cármica e à proteção. Está associada à ideia de
+                causa e efeito.<br />
+                <strong>Arcano Inicial:</strong> Você ganha vantagem ao buscar a
+                verdade ou em situações que envolvam julgamentos ou justiça.<br />
+                <strong>Utilização:</strong> A Justiça pode ser usada para
+                restaurar o equilíbrio, garantir proteção ou resolver disputas.
+                Ela também pode ser invocada para trazer consequências a quem
+                infringe as leis.<br />
+                <strong>Narrativa:</strong> O jogador usa A Justiça para
+                proteger uma testemunha crucial. Ele combina a carta com
+                “Controlar” (O Imperador - IV) para conjurar um escudo mágico
+                que bloqueia os ataques contra a testemunha (2d6 - 1).
+              </p>
+            </div>
+          </div>
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-eremita"
+                name="cartas"
+                value="IX. O Eremita"
+              />
+              <label for="card-eremita">IX. O Eremita</label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>Conceitos:</strong> Alertar / Descobertas / Sabedoria<br />
+                <strong>Descrição Geral:</strong> O Eremita é o símbolo da
+                introspecção, sabedoria interior e busca solitária. Ele
+                representa o conhecimento profundo que vem da reflexão e da
+                solidão. Está ligado à jornada espiritual e à descoberta de
+                verdades internas.<br />
+                <strong>Arcano Inicial:</strong> Você obtém vantagem ao meditar,
+                refletir ou buscar conhecimento através da introspecção.<br />
+                <strong>Utilização:</strong> O Eremita pode ser usado para
+                revelar verdades interiores, encontrar sabedoria em momentos de
+                silêncio ou guiar o grupo em jornadas solitárias.<br />
+                <strong>Narrativa:</strong> Durante uma noite tranquila, o
+                jogador usa O Eremita para refletir sobre a jornada. Ele combina
+                a carta com “Mente/Consciência” (O Enforcado - XII) para
+                encontrar a solução de um enigma antigo (2d6 - 1).
+              </p>
+            </div>
+          </div>
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-roda-fortuna"
+                name="cartas"
+                value="X. A Roda da Fortuna"
+              />
+              <label for="card-roda-fortuna">X. A Roda da Fortuna</label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>Conceitos:</strong> Destino / Karma / Sorte<br />
+                <strong>Descrição Geral:</strong> A Roda da Fortuna representa o
+                destino e os ciclos da vida. Ela simboliza as mudanças
+                inevitáveis e as forças do acaso que moldam o futuro. Está
+                associada à sorte, ao karma e ao inesperado.<br />
+                <strong>Arcano Inicial:</strong> Você ganha vantagem ao lidar
+                com situações que envolvem sorte ou mudanças inesperadas.<br />
+                <strong>Utilização:</strong> A Roda da Fortuna pode ser usada
+                para manipular a sorte, influenciar eventos ou guiar o destino
+                em momentos críticos. Ela é ideal em situações imprevisíveis.<br />
+                <strong>Narrativa:</strong> O grupo enfrenta uma situação
+                incerta em um cassino. O jogador usa A Roda da Fortuna para
+                influenciar as probabilidades a seu favor (2d6).
+              </p>
+            </div>
+          </div>
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-forca"
+                name="cartas"
+                value="XI. A Força"
+              />
+              <label for="card-forca">XI. A Força</label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>Associações:</strong> Animal, Orgulho, Conexão<br />
+                <strong>Descrição Geral:</strong> A Força simboliza coragem,
+                domínio e controle sobre as emoções e instintos. Ela representa
+                a capacidade de se conectar com o lado primal da natureza.<br />
+                <strong>Arcano Inicial:</strong> A conexão com o reino animal é
+                sua força. Você obtém vantagem em magias que envolvem feras ou
+                controle sobre criaturas.<br />
+                <strong>Utilização:</strong> A Força pode ser usada para evocar
+                ou controlar animais, ou para fortalecer a relação com o mundo
+                natural.<br />
+                <strong>Narrativa:</strong> Durante uma batalha, Lucas utiliza a
+                Força para chamar um lobo feroz que ajuda a proteger o grupo
+                (2d6).
+              </p>
+            </div>
+          </div>
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-enforcado"
+                name="cartas"
+                value="XII. O Enforcado"
+              />
+              <label for="card-enforcado">XII. O Enforcado</label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>Associações:</strong> Mente, Consciência, Pensar<br />
+                <strong>Descrição Geral:</strong> O Enforcado representa uma
+                nova perspectiva, sacrifício e introspecção. Ele simboliza o
+                controle mental e a capacidade de ver além da superfície.<br />
+                <strong>Arcano Inicial:</strong> A mente é sua força. Você obtém
+                vantagem em ações que envolvem pensamento crítico e manipulação
+                mental.<br />
+                <strong>Utilização:</strong> O Enforcado pode ser usado para
+                acessar níveis mais profundos de consciência ou para influenciar
+                os pensamentos dos outros.<br />
+                <strong>Narrativa:</strong> Em uma situação tensa, Ana utiliza o
+                Enforcado, usando seu conceito de “Consciência” para acalmar um
+                aliado em desespero, fazendo-o ver uma nova solução (2d6).
+              </p>
+            </div>
+          </div>
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-morte"
+                name="cartas"
+                value="XIII. A Morte"
+              />
+              <label for="card-morte">XIII. A Morte</label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>Associações:</strong> Espírito, Alma, Necromancia<br />
+                <strong>Descrição Geral:</strong> A Morte simboliza
+                transformação, encerramento e renovação. Ela representa a
+                conexão com o mundo espiritual e a capacidade de manipular a
+                alma.<br />
+                <strong>Arcano Inicial:</strong> A manipulação do espírito é sua
+                força. Você obtém vantagem em magias relacionadas à necromancia
+                e comunicação com espíritos.<br />
+                <strong>Utilização:</strong> A Morte pode ser usada para
+                convocar espíritos, restaurar memórias ou transformar energias
+                espirituais.<br />
+                <strong>Narrativa:</strong> Em um ritual, Felipe utiliza a
+                Morte, associando o conceito de “Necromancia” para chamar um
+                espírito ancestral que oferece sabedoria ao grupo (2d6).
+              </p>
+            </div>
+          </div>
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-temperanca"
+                name="cartas"
+                value="XIV. A Temperança"
+              />
+              <label for="card-temperanca">XIV. A Temperança</label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>Associações:</strong> Elementais, Forças, Energia<br />
+                <strong>Descrição Geral:</strong> A Temperança simboliza
+                equilíbrio, moderação e harmonia. Ela representa o controle e a
+                manipulação das forças da natureza e dos elementos.<br />
+                <strong>Arcano Inicial:</strong> A energia elemental é sua
+                força. Você obtém vantagem em magias que envolvem a evocação ou
+                controle de elementos.<br />
+                <strong>Utilização:</strong> A Temperança pode ser usada para
+                equilibrar forças opostas ou invocar elementos naturais para
+                assistirem o grupo.<br />
+                <strong>Narrativa:</strong> Diante de uma tempestade, Clara
+                utiliza a Temperança para acalmar os ventos e criar um caminho
+                seguro para o grupo (2d6).
+              </p>
+            </div>
+          </div>
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-diabo"
+                name="cartas"
+                value="XV. O Diabo"
+              />
+              <label for="card-diabo">XV. O Diabo</label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>Associações:</strong> Alimento, Oferenda, Troca<br />
+                <strong>Descrição Geral:</strong> O Diabo simboliza desejos,
+                tentações e barganhas. Ele representa a troca e a manipulação
+                das forças que regem os sacrifícios e as ofertas.<br />
+                <strong>Arcano Inicial:</strong> A troca de oferendas é sua
+                força. Você obtém vantagem em situações que envolvem negociações
+                ou sacrifícios.<br />
+                <strong>Utilização:</strong> O Diabo pode ser usado para fazer
+                acordos, realizar sacrifícios ou manipular a dinâmica de poder
+                em negociações.<br />
+                <strong>Narrativa:</strong> Em busca de poder, Jorge utiliza o
+                Diabo, combinando com “A Morte - XIII” para negociar um pacto
+                com uma entidade poderosa para obter poder, oferecendo algo
+                valioso em troca (2d6 - 1).
+              </p>
+            </div>
+          </div>
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-torre"
+                name="cartas"
+                value="XVI. A Torre"
+              />
+              <label for="card-torre">XVI. A Torre</label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>Associações:</strong> Destruir, Finalizar, Catástrofe<br />
+                <strong>Descrição Geral:</strong> A Torre simboliza a ruptura, a
+                revelação e a destruição repentina. Ela representa mudanças
+                drásticas que podem levar a novas perspectivas ou à queda de
+                estruturas estabelecidas.<br />
+                <strong>Arcano Inicial:</strong> A capacidade de causar
+                destruição é sua força. Você obtém vantagem em magias que
+                envolvem desmantelamento ou teletransporte.<br />
+                <strong>Utilização:</strong> A Torre pode ser usada para
+                desencadear catástrofes ou facilitar mudanças rápidas na
+                realidade.<br />
+                <strong>Narrativa:</strong> Em uma batalha crítica, Ricardo
+                utiliza a Torre para desabar uma construção sobre seus inimigos,
+                criando uma oportunidade de fuga (2d6).
+              </p>
+            </div>
+          </div>
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-estrela"
+                name="cartas"
+                value="XVII. A Estrela"
+              />
+              <label for="card-estrela">XVII. A Estrela</label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>Associações:</strong> Luz, Ascensão, Iluminação<br />
+                <strong>Descrição Geral:</strong> A Estrela simboliza esperança,
+                inspiração e renovação. Ela representa a busca pela verdade e a
+                iluminação espiritual.<br />
+                <strong>Arcano Inicial:</strong> A luz é sua força. Você obtém
+                vantagem em magias que envolvem revelação ou ascensão
+                espiritual.<br />
+                <strong>Utilização:</strong> A Estrela pode ser usada para
+                iluminar o caminho, revelar segredos ou inspirar outros.<br />
+                <strong>Narrativa:</strong> Em uma caverna escura, Laura utiliza
+                a Estrela para criar uma luz intensa que revela um caminho
+                escondido (2d6).
+              </p>
+            </div>
+          </div>
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-lua"
+                name="cartas"
+                value="XVIII. A Lua"
+              />
+              <label for="card-lua">XVIII. A Lua</label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>Associações:</strong> Instintos, Emoções, Trevas<br />
+                <strong>Descrição Geral:</strong> A Lua simboliza a intuição, o
+                subconsciente e os mistérios ocultos. Ela representa a conexão
+                com os instintos mais profundos e as forças invisíveis que
+                influenciam as emoções e as sombras da mente.<br />
+                <strong>Arcano Inicial:</strong> A intuição é sua força. Você
+                obtém vantagem em magias que envolvem a manipulação do
+                subconsciente ou a exploração das trevas.<br />
+                <strong>Utilização:</strong> A Lua pode ser usada para acessar a
+                intuição, explorar os mistérios ocultos ou manipular emoções e
+                medos.<br />
+                <strong>Narrativa:</strong> Em uma situação tensa, Ana utiliza a
+                Lua, combinando com “O Mago - I” para criar uma área de
+                escuridão total (2d6 - 1).
+              </p>
+            </div>
+          </div>
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-sol"
+                name="cartas"
+                value="XIX. O Sol"
+              />
+              <label for="card-sol">XIX. O Sol</label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>Associações:</strong> Corpo, Homem, Ser Humano<br />
+                <strong>Descrição Geral:</strong> O Sol simboliza vitalidade,
+                sucesso e clareza. Ele representa a força vital e a conexão com
+                o corpo humano.<br />
+                <strong>Arcano Inicial:</strong> A força do corpo é sua força.
+                Você obtém vantagem em magias que envolvem cura ou transformação
+                física.<br />
+                <strong>Utilização:</strong> O Sol pode ser usado para curar
+                feridas, fortalecer o corpo ou provocar transformações
+                físicas.<br />
+                <strong>Narrativa:</strong> Durante uma luta, Camila utiliza o
+                Sol, combinando com “A Força - XI” para modificar seu corpo,
+                transformando-se em um morcego gigante (2d6).
+              </p>
+            </div>
+          </div>
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-julgamento"
+                name="cartas"
+                value="XX. O Julgamento"
+              />
+              <label for="card-julgamento">XX. O Julgamento</label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>Associações:</strong> Som, Renovação, Despertar<br />
+                <strong>Descrição Geral:</strong> O Julgamento simboliza
+                renascimento, avaliação e o chamado interior. Ele representa o
+                poder do som e das vibrações que trazem mudanças.<br />
+                <strong>Arcano Inicial:</strong> O som é sua força. Você obtém
+                vantagem em magias que envolvem música, encantamentos ou
+                renovações.<br />
+                <strong>Utilização:</strong> O Julgamento pode ser usado para
+                despertar poderes latentes, chamar atenção ou transformar
+                energias através do som.<br />
+                <strong>Narrativa:</strong> Em uma cerimônia de renascimento,
+                Ricardo utiliza o Julgamento, combinando com “O Sol - XIX” para
+                tocar uma melodia que transforma a si e a seus aliados,
+                adaptando-os à nova dimensão (2d6 - 1).
+              </p>
+            </div>
+          </div>
+          <div class="tarot-card">
+            <div class="flex">
+              <input
+                type="checkbox"
+                id="card-mundo"
+                name="cartas"
+                value="XXI. O Mundo"
+              />
+              <label for="card-mundo">XXI. O Mundo</label>
+              <button class="accordion-toggle">
+                <span>⯆</span>
+              </button>
+            </div>
+            <div class="accordion-content">
+              <p>
+                <strong>Associações:</strong> Transformar, Passagem, Planos<br />
+                <strong>Descrição Geral:</strong> O Mundo simboliza realização,
+                completude e a interconexão de todos os seres. Ele representa a
+                capacidade de transcender e viajar entre diferentes planos de
+                existência.<br />
+                <strong>Arcano Inicial:</strong> A transformação é sua força.
+                Você obtém vantagem em magias que envolvem viagens
+                interdimensionais ou transições de estado.<br />
+                <strong>Utilização:</strong> O Mundo pode ser usado para
+                facilitar viagens entre planos ou transformar a realidade.<br />
+                <strong>Narrativa:</strong> Diante de uma barreira mágica, Clara
+                utiliza o Mundo, combinando com “Passagem” para abrir um portal
+                que leva o grupo a uma nova dimensão (2d6 - 1).
+              </p>
+            </div>
+          </div>
+        </div>
+        <p class="tarot-warning" style="color: red; display: none">
+          Você deve selecionar entre 3 e 22 cartas!
+        </p>
+      </div>
+    </div>
+    <!-- Aba Biografia -->
+    <div id="tab-bio" class="tab">
+      <!-- Biografia do personagem -->
+      <h2>Biografia do personagem</h2>
+
+      <div class="textarea-group">
+        <label>Biografia:</label>
+        <textarea name="bio">{{actor.system.bio}}</textarea>
+      </div>
+    </div>
+
+    <button type="submit" class="save">Salvar</button>
+  </div>
+</form>
