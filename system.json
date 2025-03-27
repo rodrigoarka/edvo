@@ -31,7 +31,7 @@
   ],
   "url": "https://github.com/rodrigoarka/edvo",
   "manifest": "https://raw.githubusercontent.com/rodrigoarka/edvo/refs/heads/main/system.json",
-  "download": "https://github.com/rodrigoarka/edvo/archive/refs/tags/edvo.zip",
+  "download": "https://github.com/rodrigoarka/edvo/archive/refs/tags/edvo-0.4.zip",
   "bugs": "https://github.com/rodrigoarka/edvo/issues",
   "license": "LICENSE"
 }
