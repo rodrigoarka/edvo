@@ -8,14 +8,6 @@ class CustomActorSheet extends ActorSheet {
     super.activateListeners(html);
     console.log("EdVO | Eventos ativados na ficha personalizada!");
 
-    async function registrarPartials() {
-      const partialContent = await fetch(
-        "systems/edvo/templates/partials/attibutes.hbs"
-      ).then((res) => res.text());
-      Handlebars.registerPartial("attibutes", partialContent);
-    }
-    registrarPartials();
-
     // Configuração para adicionar novos traumas
     const maxTraumas = 5; // Limite máximo de traumas
     const maxDesejos = 5; // Limite máximo de desejos
@@ -332,29 +324,23 @@ class CustomActorSheet extends ActorSheet {
       const d2 = Math.floor(Math.random() * 6) + 1;
       const total = d1 + d2 - penalty; // Soma dos dados
 
-      // Determina o resultado de sucesso
-      const result =
-        total >= 10
-          ? "<strong style='color: green;'>Sucesso Completo</strong>"
-          : total >= 7
-          ? "<strong style='color: orange;'>Sucesso Parcial</strong>"
-          : "<strong style='color: red;'>Falha</strong>";
-
       console.log(
-        `EdVO | Resultado ECO: d1=${d1}, d2=${d2}, penalidade=${penalty}, total=${total}, resultado=${result}`
+        `EdVO | Resultado ECO: d1=${d1}, d2=${d2}, penalidade=${penalty}, total=${total}`
       );
 
-      // Envia a mensagem para o chat com os dados da rolagem
-      ChatMessage.create({
-        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-        content: `
-            <strong>Rolagem de ECO:</strong><br>
-            🎲 Dados: ${d1} + ${d2}<br>
-            🌟 Total: ${total}<br>
-            🏆 Resultado: ${result}
-          `,
-        flavor: "Rolagem ECO",
-      });
+      const data = {
+        actor: this.actor,
+        titulo: "Ecos",
+        dado1: d1,
+        dado2: d2,
+        descricao: `${d1} + ${d2} - ${penalty} (traumas)`,
+        rolagem: {
+          total: total,
+        },
+      };
+
+      // Enviar mensagem ao chat
+      sendMessageToChat(data);
     });
 
     // Evento para rolar dados para atributos
