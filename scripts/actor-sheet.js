@@ -370,6 +370,7 @@ class CustomActorSheet extends ActorSheet {
       );
 
       const data = {
+        actor: this.actor,
         titulo: attributeName,
         dado1: d1,
         dado2: d2,
@@ -505,7 +506,7 @@ class CustomActorSheet extends ActorSheet {
 
       ChatMessage.create({
         content: html,
-        speaker: ChatMessage.getSpeaker(), // Determina quem "falou" no chat
+        speaker: ChatMessage.getSpeaker({ actor: actor }), // Determina quem "falou" no chat
       });
     }
   }
