@@ -455,12 +455,12 @@ class CustomActorSheet extends ActorSheet {
         });
 
       // Validação de quantidade
-      if (selectedCards.length < 3 || selectedCards.length > 22) {
-        html.find(".tarot-warning").show();
-        setTimeout(() => html.find(".tarot-warning").hide(), 3000);
-        console.warn("EdVO | Número inválido de cartas selecionadas!");
-        return;
-      }
+      // if (selectedCards.length < 3 || selectedCards.length > 22) {
+      //   html.find(".tarot-warning").show();
+      //   setTimeout(() => html.find(".tarot-warning").hide(), 3000);
+      //   console.warn("EdVO | Número inválido de cartas selecionadas!");
+      //   return;
+      // }
 
       const actorData = {
         name: formData.get("name"),
