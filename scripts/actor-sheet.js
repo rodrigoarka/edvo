@@ -506,7 +506,7 @@ class CustomActorSheet extends ActorSheet {
 
       ChatMessage.create({
         content: html,
-        speaker: ChatMessage.getSpeaker({ actor: actor }), // Determina quem "falou" no chat
+        speaker: ChatMessage.getSpeaker({ actor: data.actor }), // Determina quem "falou" no chat
       });
     }
   }
