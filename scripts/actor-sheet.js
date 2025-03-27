@@ -8,6 +8,14 @@ class CustomActorSheet extends ActorSheet {
     super.activateListeners(html);
     console.log("EdVO | Eventos ativados na ficha personalizada!");
 
+    async function registrarPartials() {
+      const partialContent = await fetch(
+        "systems/edvo/templates/partials/attibutes"
+      ).then((res) => res.text());
+      Handlebars.registerPartial("attibutes", partialContent);
+    }
+    registrarPartials();
+
     // Configuração para adicionar novos traumas
     const maxTraumas = 5; // Limite máximo de traumas
     const maxDesejos = 5; // Limite máximo de desejos
