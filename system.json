@@ -18,8 +18,7 @@
     "scripts/actor-sheet.js"
   ],
   "styles": [
-    "styles/edvo.css",
-    "scripts/actor-sheet.js"
+    "styles/edvo.css"
   ],
   "esmodules": [],
   "packs": [],
