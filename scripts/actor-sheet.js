@@ -10,7 +10,7 @@ class CustomActorSheet extends ActorSheet {
 
     async function registrarPartials() {
       const partialContent = await fetch(
-        "systems/edvo/templates/partials/attibutes"
+        "systems/edvo/templates/partials/attibutes.hbs"
       ).then((res) => res.text());
       Handlebars.registerPartial("attibutes", partialContent);
     }
