@@ -1,6 +1,27 @@
 /* Estilos Gerais para a Ficha */
 @import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Playwrite+AU+SA:wght@100..400&family=Unna:ital,wght@0,400;0,700;1,400;1,700&family=Yusei+Magic&display=swap');
 
+.window-app.actor {
+    resize: none;
+    /* Desabilita o redimensionamento */
+}
+
+.window-app.actor .window-resizable-handle {
+    display: none;
+    /* Oculta as alças de redimensionamento */
+}
+
+.attribute-icon {
+    width: 60px;
+    /* Ajuste o tamanho do ícone */
+    height: 60px;
+    margin: 10px;
+    display: flex;
+    justify-self: center;
+    border: none;
+}
+
+
 .actor-sheet {
     /* background-color: #e7def5; */
     background-image: url("../assets/imgs/fundo.webp");
@@ -28,6 +49,11 @@
     max-width: 100%;
 }
 
+.actor-sheet * {
+
+    font-family: "Yusei Magic", sans-serif;
+}
+
 .actor-sheet button:hover,
 .actor-sheet button:focus {
     outline: none;
@@ -44,7 +70,7 @@
 .actor-sheet h3 {
     font-size: 24px;
     color: #d1a655;
-    /* Roxo pastel mais forte */
+    font-family: "Boldonse", system-ui;
     text-align: center;
     border-bottom: 2px solid #d1a655;
     /* Linha dourada no cabeçalho */
@@ -109,10 +135,23 @@
     /* Adiciona leve sombra */
 }
 
+.actor-sheet .attribute label {
+    font-weight: 100;
+    color: #d1a655;
+    margin-top: 10px;
+    display: block;
+    font-family: "Boldonse", system-ui;
+    letter-spacing: 2px;
+}
+
 .actor-sheet .attribute input {
     justify-items: center;
     margin-bottom: 10px;
+    width: 50px;
+    height: 50px;
     text-align: center;
+    display: flex;
+    place-self: center;
 }
 
 /* Cabeçalho: Nome e Arcano lado a lado */
@@ -138,11 +177,27 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    background-color: #eee6f2;
+    background-color: #6c538e;
     /* Fundo roxo claro */
     border-radius: 4px;
     padding: 10px;
     flex-direction: column;
+}
+
+/* Botões Gerais */
+.actor-sheet .attribute button {
+    justify-items: center;
+    background: none;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    place-self: center;
+}
+
+.actor-sheet .attribute button:hover {
+    background: none;
+    filter: drop-shadow(2px 4px 6px black);
 }
 
 /* Botões Gerais */
@@ -155,6 +210,109 @@
     padding: 5px 10px;
     cursor: pointer;
     font-weight: bold;
+}
+
+.actor-sheet button.roll-dice {
+    background: none;
+    padding-top: 15px;
+}
+
+.actor-sheet button.roll-eco,
+.actor-sheet button.roll-eco:hover {
+    position: relative;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 50%;
+    background-color: #6c538e;
+    border: none;
+    /* border-radius: 5px; */
+    height: 100px;
+    cursor: pointer;
+    outline: none;
+    /* overflow: hidden; */
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+
+}
+
+.actor-sheet button.roll-eco .superbg {
+    position: absolute;
+    z-index: 44;
+    background: #6c538e;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    top: 0;
+    left: 0;
+}
+
+.actor-sheet button.roll-eco::before {
+    content: '';
+    position: absolute;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    transition: opacity 1s, transform 1s, width 1s, height 1s;
+    opacity: 0;
+}
+
+.actor-sheet button.roll-eco:hover::before {
+    width: 100px;
+    /* Tamanho máximo da aura */
+    height: 100px;
+    opacity: 1;
+    animation: pulse 3s infinite ease-in-out;
+    /* Define a animação pulsante */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1.2);
+        opacity: 0.0;
+    }
+}
+
+::after {
+    width: 150px;
+    /* Tamanho máximo da aura */
+    height: 150px;
+    opacity: 1;
+    animation: pulse 1.5s infinite ease-in-out;
+    /* Define a animação pulsante */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+}
+
+/* Botões Gerais */
+.actor-sheet .img-roll-dice {
+    border: none;
 }
 
 .eco-roll {

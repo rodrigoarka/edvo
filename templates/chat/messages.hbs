@@ -1,7 +1,15 @@
 <div class="chat-card">
   <div class="dark">
     <header class="card-header">
-      <h3>{{titulo}}</h3>
+      <h3 class="attribute-title">
+
+        <span class="attribute-name">{{titulo}}</span>
+      </h3>
+      {{#if icon}}
+      <img class="attribute-icon" data-attribute="{{titulo}}" src="systems/edvo/assets/imgs/svgs/{{titulo}}.svg"
+        alt="" />
+
+      {{/if}}
     </header>
 
     <div class="card-dices">

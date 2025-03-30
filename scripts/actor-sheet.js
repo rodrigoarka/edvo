@@ -332,6 +332,7 @@ class CustomActorSheet extends ActorSheet {
         actor: this.actor,
         titulo: "Ecos",
         dado1: d1,
+        icon: true,
         dado2: d2,
         descricao: `${d1} + ${d2} - ${penalty} (traumas)`,
         rolagem: {
@@ -368,6 +369,7 @@ class CustomActorSheet extends ActorSheet {
         titulo: attributeName,
         dado1: d1,
         dado2: d2,
+        icon: true,
         descricao: `${d1} + ${d2} + ${value} (atributo) - ${penalty} (traumas)`,
         rolagem: {
           total: total,
