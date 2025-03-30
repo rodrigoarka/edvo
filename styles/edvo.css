@@ -15,7 +15,7 @@
     width: 60px;
     /* Ajuste o tamanho do ícone */
     height: 60px;
-    margin: 10px;
+    margin: 10px auto;
     display: flex;
     justify-self: center;
     border: none;
