@@ -281,6 +281,7 @@ class CustomActorSheet extends ActorSheet {
         system: {
           arcano: formData.get("arcano"),
           arquetipo: formData.get("arquetipo"),
+          cicatriz: formData.get("cicatriz"),
           idade: formData.get("idade"),
           genero: formData.get("genero"),
           aparencia: formData.get("aparencia"),
@@ -464,6 +465,7 @@ class CustomActorSheet extends ActorSheet {
         system: {
           arcano: formData.get("arcano"),
           arquetipo: formData.get("arquetipo"),
+          cicatriz: formData.get("cicatriz"),
           idade: formData.get("idade"),
           genero: formData.get("genero"),
           aparencia: formData.get("aparencia"),

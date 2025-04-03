@@ -113,7 +113,6 @@
     font-weight: bold;
     color: #d1a655;
     /* Dourado para destacar os labels */
-    margin-top: 10px;
     display: block;
 }
 
@@ -477,7 +476,7 @@
     margin-bottom: 10px;
 }
 
-.headerInclude headers {
+.headerInclude .headers {
     display: flex;
     flex-direction: column;
     flex: 1;
