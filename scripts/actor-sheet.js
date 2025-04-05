@@ -599,7 +599,7 @@ class CustomActorSheet extends ActorSheet {
 
       const data = {
         actor: this.actor,
-        titulo: "Ecos",
+        titulo: "ecos",
         dado1: d1,
         icon: true,
         dado2: d2,
