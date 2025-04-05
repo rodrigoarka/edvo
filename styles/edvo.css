@@ -183,6 +183,12 @@
     flex-direction: column;
 }
 
+.actor-sheet select {
+    width: 100%;
+    background: #eee6f2;
+    border: none;
+}
+
 /* Botões Gerais */
 .actor-sheet .attribute button {
     justify-items: center;
@@ -373,6 +379,11 @@
     text-align: center;
 }
 
+/* Área de ECO */
+.actor-sheet .text-group {
+    color: #fff;
+}
+
 /* Textareas */
 .actor-sheet .textarea-group {
     margin-bottom: 10px;
@@ -497,6 +508,16 @@
     padding: 5px 10px;
     cursor: pointer;
     font-weight: bold;
+}
+
+.actor-sheet button.beneficio-btn {
+    width: 160px;
+    height: 27px;
+    font-size: 10px;
+    padding: 5px 0px 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .actor-sheet button.select-image:hover {

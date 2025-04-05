@@ -1,5 +1,3 @@
-// Importa a classe da ficha personalizada
-
 console.log("EdVO | Arquivo carregado: edvo.js");
 
 // Objeto do sistema EdVO
@@ -63,10 +61,16 @@ const EdVO = {
 // Registra a ficha personalizada e inicializa o sistema
 Hooks.once("init", () => {
   console.log("EdVO | Inicializando sistema...");
+
+  Handlebars.registerHelper("inc", function (value) {
+    return parseInt(value) + 1;
+  });
+
   Actors.registerSheet("edvo", CustomActorSheet, {
     types: ["character"],
     makeDefault: true,
   });
+
   // Teste básico para evitar erros
   console.log("EdVO | Registro concluído!");
 });

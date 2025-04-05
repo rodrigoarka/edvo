@@ -1,7 +1,7 @@
 class CustomActorSheet extends ActorSheet {
   // Define o template HTML da ficha
   get template() {
-    return "systems/edvo/templates/actor-sheet.html"; // Atualize o caminho para refletir a localização correta!
+    return "systems/edvo/templates/actor-sheet.hbs"; // Atualize o caminho para refletir a localização correta!
   }
 
   activateListeners(html) {
@@ -18,9 +18,277 @@ class CustomActorSheet extends ActorSheet {
     const warningMessageT = html.find(".trauma-warning");
     const warningMessageD = html.find(".desejo-warning");
 
+    const arcanos = {
+      louco: {
+        nome: "O Louco (0) – O Viajante do Abismo",
+        conceito:
+          "Aquele que caminha rumo ao desconhecido, movido pela liberdade e pela loucura divina.",
+        movimento1:
+          "Passo no Abismo: Quando avança sem planejamento, pode rolar um benefício inesperado, mas algo imprevisível também acontece.",
+        movimento2:
+          "Sorte do Louco: Uma vez por sessão, pode reverter um fracasso total em um sucesso parcial.",
+      },
+      mago: {
+        nome: "O Mago (I) – O Conjurador Criativo",
+        conceito:
+          "Alguém que transforma intenção em realidade por meio do talento, vontade e imaginação.",
+        movimento1:
+          "Toque Criador: Ao usar sua criatividade para improvisar uma solução mágica, ganha vantagem.",
+        movimento2:
+          "Conjuração Instintiva: Pode manifestar efeitos mágicos sutis quando tiver outra carta ativa como foco.",
+      },
+      sacerdotisa: {
+        nome: "A Sacerdotisa (II) – A Guardiã dos Mistérios",
+        conceito:
+          "Aquela que compreende os segredos do mundo oculto e os guarda entre véus de silêncio.",
+        movimento1:
+          "Ler os Véus: Quando tenta desvendar algo oculto, ganha vantagem.",
+        movimento2:
+          "Segredo Revelado: Uma vez por sessão, pode fazer uma pergunta ao mestre sobre o mundo oculto e receber uma verdade incompleta.",
+      },
+      imperatriz: {
+        nome: "A Imperatriz (III) – A Mãe da Criação",
+        conceito:
+          "Fonte de vida, proteção e abundância. Sua presença é restauradora.",
+        movimento1:
+          "Toque Vital: Pode curar 1 ponto de trauma de alguém uma vez por cena.",
+        movimento2:
+          "Bênção Crescente: Quando oferece cuidado sincero, o alvo recebe vantagem em sua próxima ação emocional.",
+      },
+      imperador: {
+        nome: "O Imperador (IV) – O Trono Inabalável",
+        conceito:
+          "A figura de ordem, estabilidade e domínio. Comanda pela estrutura e pela presença.",
+        movimento1:
+          "Autoridade Incontestável: Quando lidera com firmeza, ganha vantagem.",
+        movimento2:
+          "Comando de Ferro: Pode obrigar um NPC a obedecer um comando lógico através de pura presença.",
+      },
+      hierofante: {
+        nome: "O Hierofante (V) – A Ponte entre Mundos",
+        conceito:
+          "Aquele que traduz os ensinamentos do alto e guia os outros na fé ou no conhecimento antigo.",
+        movimento1:
+          "Ritual de Conexão: Ao realizar um rito, pode acessar conhecimento ou intervenção espiritual.",
+        movimento2:
+          "Palavra Ungida: Pode inspirar ou pacificar uma multidão ou grupo com um discurso poderoso.",
+      },
+      amantes: {
+        nome: "Os Amantes (VI) – Os Corações Entrelaçados",
+        conceito:
+          "Símbolo de conexão profunda e das escolhas que definem nosso destino.",
+        movimento1:
+          "Vínculo Inquebrável: Pode criar um elo emocional forte com outro personagem, dando vantagem quando agem juntos.",
+        movimento2:
+          "Escolha Dolorosa: Diante de uma decisão difícil, pode sacrificar algo pessoal para garantir sucesso a outro.",
+      },
+      carro: {
+        nome: "O Carro (VII) – O Conquistador Determinado",
+        conceito:
+          "Aquele que avança com força e direção, superando obstáculos pelo impulso da vontade.",
+        movimento1:
+          "Avanço Imparável: Quando persegue um objetivo com obstinação, ganha vantagem.",
+        movimento2:
+          "Impulso Final: Pode transformar um empate ou falha parcial em sucesso total ao se arriscar fisicamente.",
+      },
+      justica: {
+        nome: "A Justiça (VIII) – O Julgamento Imparcial",
+        conceito:
+          "A balança que pesa verdades e consequências. Equilíbrio entre ação e ética.",
+        movimento1:
+          "Olhar Penetrante: Pode perceber uma mentira ou meia-verdade com um olhar direto.",
+        movimento2:
+          "Restauração do Equilíbrio: Pode selar um conflito ou estabilizar uma situação tensa com palavras ou intervenção direta.",
+      },
+      eremita: {
+        nome: "O Eremita (IX) – O Guardião da Luz Interior",
+        conceito:
+          "Busca a verdade longe do mundo, guiado pela própria lanterna.",
+        movimento1:
+          "Iluminar as Sombras: Pode fazer uma pergunta introspectiva e receber uma visão ou dica do mestre.",
+        movimento2:
+          "Retiro Estrategista: Ao agir sozinho, pode obter vantagem em ações de investigação, magia ou furtividade.",
+      },
+      roda: {
+        nome: "A Roda da Fortuna (X) – A Teia do Destino",
+        conceito:
+          "A imprevisibilidade da sorte, os ciclos que giram além do controle humano.",
+        movimento1:
+          "Fluxo Inesperado: Uma vez por cena, pode trocar o resultado de uma rolagem entre dois jogadores (incluindo você).",
+        movimento2:
+          "Eco do Destino: Quando algo dá errado de forma dramática, ganha um Presságio útil para usar mais tarde.",
+      },
+      forca: {
+        nome: "A Força (XI) – A Fera Domada",
+        conceito:
+          "Poder bruto canalizado pela compaixão, coragem ou controle interior.",
+        movimento1:
+          "Domínio Feroz: Pode enfrentar uma ameaça física superior com vantagem ao manter a calma.",
+        movimento2:
+          "Lado Selvagem: Quando se entrega ao instinto ou emoção, pode causar um efeito inesperado mas poderoso.",
+      },
+      enforcado: {
+        nome: "O Enforcado (XII) – O Visionário Sacrificado",
+        conceito:
+          "Aquele que enxerga o mundo de um ponto de vista único, mas paga o preço por isso.",
+        movimento1:
+          "Revelação Dolorosa: Quando sofre um Trauma, pode receber uma visão importante sobre o futuro.",
+        movimento2:
+          "Resignação Iluminada: Quando aceita uma perda ou sacrifício, pode rolar um benefício inesperado.",
+      },
+      morte: {
+        nome: "A Morte (XIII) – A Ceifadora da Transformação",
+        conceito:
+          "Fim e recomeço. Ela leva o que precisa morrer para que o novo possa nascer.",
+        movimento1:
+          "Transição Inevitável: Pode encerrar uma cena ou situação ao invocar uma mudança drástica.",
+        movimento2:
+          "Falar com os Mortos: Uma vez por sessão, pode se comunicar com uma entidade falecida.",
+      },
+      temperanca: {
+        nome: "A Temperança (XIV) – A Alquimista do Equilíbrio",
+        conceito:
+          "Mestra da harmonia entre forças opostas. Transforma conflito em clareza.",
+        movimento1:
+          "Mistura Precisa: Pode combinar dois efeitos mágicos ou narrativos em algo novo e útil.",
+        movimento2:
+          "Fluxo Controlado: Quando age com paciência e cálculo, ganha vantagem.",
+      },
+      diabo: {
+        nome: "O Diabo (XV) – O Tentador das Correntes",
+        conceito:
+          "Aquele que revela os desejos ocultos e os laços que prendem. Poder e vício andam juntos.",
+        movimento1:
+          "Oferta Irresistível: Pode dar a um NPC (ou jogador com consentimento) algo que deseja em troca de controle momentâneo.",
+        movimento2:
+          "Correntes Internas: Quando enfrenta seus próprios vícios ou tentações, ganha um bônus se assumir o risco.",
+      },
+      torre: {
+        nome: "A Torre (XVI) – A Ruína Libertadora",
+        conceito:
+          "Quando tudo desaba, algo novo pode emergir. A destruição é um prenúncio de libertação.",
+        movimento1:
+          "Queda Inesperada: Pode provocar uma catástrofe controlada para mudar a maré da cena.",
+        movimento2:
+          "Renascer entre os Escombros: Após um fracasso crítico, pode levantar-se com nova clareza ou recurso.",
+      },
+      estrela: {
+        nome: "A Estrela (XVII) – A Luz na Escuridão",
+        conceito:
+          "Esperança e cura em meio ao desespero. Um farol para si e para os outros.",
+        movimento1:
+          "Brilho Reconfortante: Pode curar 1 Trauma de outro personagem ao oferecer consolo sincero.",
+        movimento2:
+          "Guia Celeste: Uma vez por cena, pode receber uma inspiração ou intuição do além.",
+      },
+      lua: {
+        nome: "A Lua (XVIII) – A Sombra Sonhadora",
+        conceito:
+          "Revela ilusões e verdades escondidas sob a superfície. O poder dos sonhos e do inconsciente.",
+        movimento1:
+          "Névoa da Mente: Pode confundir ou iludir alguém com palavras ambíguas ou magia sutil.",
+        movimento2:
+          "Reflexo Oculto: Uma vez por sessão, pode inverter o efeito de uma magia ou ação direcionada a você.",
+      },
+      sol: {
+        nome: "O Sol (XIX) – A Clareza Radiante",
+        conceito:
+          "Ilumina, revela e aquece. Traz verdade, alegria e renascimento.",
+        movimento1:
+          "Brilho Deslumbrante: Pode expor algo oculto ou banir uma escuridão metafórica ou real.",
+        movimento2:
+          "Força Revigorante: Pode restaurar a esperança de um aliado, removendo 1 Trauma emocional.",
+      },
+      julgamento: {
+        nome: "O Julgamento (XX) – O Chamado Final",
+        conceito:
+          "Convoca os mortos e os vivos a encarar seus feitos. A redenção ou a condenação.",
+        movimento1:
+          "Eco do Passado: Pode invocar um evento anterior para influenciar a cena presente.",
+        movimento2:
+          "Chamado do Despertar: Uma vez por sessão, pode fazer alguém perceber sua verdadeira natureza.",
+      },
+      mundo: {
+        nome: "O Mundo (XXI) – O Círculo Completo",
+        conceito:
+          "Conclusão, plenitude e conexão com o todo. O fim que é também começo.",
+        movimento1:
+          "Síntese Perfeita: Pode unir duas forças opostas em uma solução completa.",
+        movimento2:
+          "Passo Final: Ao encerrar um ciclo importante, pode receber um presságio, recompensa ou evolução.",
+      },
+    };
+
     if (this.actor.isOwner) {
       html.addClass("actor-owner");
     }
+
+    function formatarNegrito(movimento) {
+      return movimento.replace(/^(.+?):/, "<strong>$1:</strong>");
+    }
+
+    const beneficios = {
+      1: "Eco do Arcano: O personagem pode usar uma carta do Tarot que ainda não possui por uma cena. A carta funciona normalmente.",
+      2: "Sonho Profético: O personagem recebe uma visão poderosa durante o sono ou em transe. Ele ganha uma nova característica de Desejo. Esse desejo pode ser usado para curar um Trauma ou conceder +1 em uma ação relacionada, enquanto estiver ativo.",
+      3: "Artefato Perdido: Os personagens encontram um objeto místico. Ele pode ser usado como foco mágico e concede o mesmo bônus que uma limitação mágica — mas sem a restrição.",
+      4: "Favor dos Ecos: O jogador pode transformar uma falha em um sucesso com consequência. Esse benefício pode ser usado até o fim da sessão.",
+      5: "Uma Conexão Retorna: Uma das Conexões Importantes do personagem aparece para ajudar. Pode ser diretamente, através de influência, ou por algo que deixou para trás. O vínculo se manifesta de forma inesperada.",
+      6: "Ambiente Alterado: Uma força oculta muda o ambiente ao redor a favor dos personagens — abrindo uma rota, revelando um segredo, enfraquecendo uma barreira ou criando uma oportunidade inesperada.",
+    };
+
+    html.find(".beneficio-btn").click(async () => {
+      const roll = await new Roll("1d6").roll({ async: true });
+
+      const data = {
+        actor: this.actor,
+        titulo: "Benefício Inesperado",
+        descricao: formatarNegrito(beneficios[roll.total]),
+        dado1: roll.total,
+      };
+
+      // Enviar mensagem ao chat
+      sendMessageToChat(data);
+    });
+
+    const loadMovimentos = () => {
+      const arcanoSelecionado = this.actor.system?.arcano || ""; // Obtém as cartas salvas
+
+      const info = arcanos[arcanoSelecionado];
+
+      const container = html.find(".text-group");
+      if (info) {
+        container.html(`
+          <h3>${info.nome}</h3>
+          <p> ${info.conceito}</p>
+          <p> ${formatarNegrito(info.movimento1)}</p>
+          <p> ${formatarNegrito(info.movimento2)}</p>
+        `);
+      } else {
+        container.html(
+          "<p>Selecione um Arcano para ver seu movimento exclusivo.</p>"
+        );
+      }
+    };
+    loadMovimentos();
+
+    html.find("select[name='arcano']").on("change", function () {
+      const arcanoSelecionado = $(this).val();
+      const info = arcanos[arcanoSelecionado];
+
+      const container = html.find(".text-group");
+      if (info) {
+        container.html(`
+          <h3>${info.nome}</h3>
+          <p> ${info.conceito}</p>
+          <p> ${formatarNegrito(info.movimento1)}</p>
+          <p> ${formatarNegrito(info.movimento2)}</p>
+        `);
+      } else {
+        container.html(
+          "<p>Selecione um Arcano para ver seu movimento exclusivo.</p>"
+        );
+      }
+    });
 
     const loadSelectedCards = () => {
       const selectedCards = this.actor.system?.mecanicas?.cartas || []; // Obtém as cartas salvas
@@ -459,7 +727,7 @@ class CustomActorSheet extends ActorSheet {
       //   console.warn("EdVO | Número inválido de cartas selecionadas!");
       //   return;
       // }
-
+      console.log("arcano", formData.get("arcano"));
       const actorData = {
         name: formData.get("name"),
         system: {

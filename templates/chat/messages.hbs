@@ -14,11 +14,14 @@
 
     <div class="card-dices">
       <div class="dices">{{dado1}}</div>
+      {{#if dado2}}
       <div class="plus">+</div>
       <div class="dices">{{dado2}}</div>
+
+      {{/if}}
     </div>
     <div class="card-content">
-      <p>{{descricao}}</p>
+      <p style="font-size: 15px;text-align: center;">{{{descricao}}}</p>
     </div>
     {{#if rolagem}}
     <div class="roll-result">

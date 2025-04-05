@@ -1,0 +1,40 @@
+<form class="edvo item-sheet" autocomplete="off">
+    <header class="sheet-header flexrow">
+        <img class="profile" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+        <div class="header-details flexcol">
+            <h1 class="charname">
+                <input name="name" type="text" value="{{item.name}}" placeholder="Nome da Criatura" />
+            </h1>
+            <div class="item-type">Tipo: Criatura</div>
+        </div>
+    </header>
+
+    <section class="sheet-body">
+        <div class="tab-content">
+            <div class="form-group">
+                <label for="system.traumas">Traumas até ser banido:</label>
+                <input type="number" name="system.traumas" value="{{system.traumas}}" min="0" />
+            </div>
+
+            <div class="form-group">
+                <label for="system.aparencia">Aparência:</label>
+                <textarea name="system.aparencia" rows="3">{{system.aparencia}}</textarea>
+            </div>
+
+            <hr />
+
+            <div class="form-group">
+                <label>⚔️ Tabela de Ataques (1d6):</label>
+                <ol>
+                    {{#each system.tabelaAtaques as |ataque i|}}
+                    <li>
+                        <input type="text" name="system.tabelaAtaques.{{i}}" value="{{ataque}}"
+                            placeholder="Ataque {{inc i}}" />
+                    </li>
+                    {{/each}}
+                </ol>
+                <button type="button" class="roll-ataque"><i class="fas fa-dice-d6"></i> Rolar Ataque</button>
+            </div>
+        </div>
+    </section>
+</form>

@@ -1,14 +1,10 @@
 {
     "Actor": {
         "types": [
-            "character",
-            "npc",
-            "Jogador"
+            "character"
         ],
         "templates": {
-            "character": "templates/actors/character.json",
-            "Jogador": "templates/actors/jogador.json",
-            "npc": "templates/actors/npc.json"
+            "character": "templates/actors/character.json"
         }
     }
 }

@@ -1,0 +1,33 @@
+<form class="item-sheet" autocomplete="off">
+  <header class="sheet-header">
+    <h1><input name="name" type="text" value="{{item.name}}" /></h1>
+  </header>
+
+  <div class="sheet-content">
+    <label>Traumas até banido:</label>
+    <input type="number" name="system.traumas" value="{{system.traumas}}" />
+
+    <label>Aparência:</label>
+    <textarea name="system.aparencia">{{system.aparencia}}</textarea>
+
+    <label>Tabela de Ataques (1d6):</label>
+    {{#each system.ataques as |ataque i|}}
+      <div><b>{{inc i}}.</b>
+        <input
+          type="text"
+          name="system.ataques.{{i}}"
+          value="{{ataque}}"
+        /></div>
+    {{/each}}
+
+    {{! Adicionar linha se ataques forem menos de 6 }}
+    {{#if (lt (length system.ataques) 6)}}
+      {{#each (range (length system.ataques) 6) as |i|}}
+        <div><b>{{inc i}}.</b>
+          <input type="text" name="system.ataques.{{i}}" /></div>
+      {{/each}}
+    {{/if}}
+
+    <button type="button" class="roll-ataque">Rolar Ataque Aleatório</button>
+  </div>
+</form>
