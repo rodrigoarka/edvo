@@ -1,0 +1,19 @@
+{
+    "type": "colmeia",
+    "name": "",
+    "img": "https://images.squarespace-cdn.com/content/v1/623630cdac76e50a19a24307/91c1ff2c-8821-4a43-9901-e337a94cf4eb/fvtt.png",
+    "system": {
+        "tipo": "",
+        "traumas": {
+            "value": 3,
+            "max": 3
+        }
+    },
+    "token": {
+        "bar1": {
+            "attribute": "system.traumas"
+        },
+        "displayBars": 20,
+        "displayName": 0
+    }
+}

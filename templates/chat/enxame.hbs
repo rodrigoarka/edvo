@@ -1,0 +1,29 @@
+<div class="chat-card">
+  <div class="dark">
+    <header class="card-header">
+      <h3 class="attribute-title">
+
+        <span class="attribute-name">{{titulo}}</span>
+      </h3>
+    </header>
+
+
+    {{#if rolagem}}
+    <div class="roll-result">
+      <div class="title">
+        Total
+      </div>
+      <div class="roll">
+        {{rolagem.total}}
+      </div>
+    </div>
+    <div class="roll-desc">
+      {{resultadoRolagem rolagem.total}}
+    </div>
+    {{/if}}
+
+    <div class="card-content">
+      <p style="font-size: 15px;text-align: center;">{{{descricao}}}</p>
+    </div>
+  </div>
+</div>

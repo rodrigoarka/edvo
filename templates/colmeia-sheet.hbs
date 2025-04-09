@@ -1,0 +1,61 @@
+<form class="sheet" autocomplete="off">
+  <div class="actor-sheet">
+    <!-- Cabeçalho -->
+
+    <div class="headerInclude">
+      <div class="actor-image">
+        <img src="{{actor.img}}" alt="Imagem do Personagem" />
+        <button type="button" class="select-image" title="Alterar Imagem">
+          Alterar Imagem
+        </button>
+      </div>
+
+      <div class="headers">
+        <div class="header" style="flex-direction: column;">
+          <div class="field-group" style="width: 100%">
+            <label>Nome:</label>
+            <input type="text" name="name" value="{{actor.name}}" />
+          </div>
+          <div class="form-group" style="width: 100%">
+            <label for="data.tipoEnxame">Tipo de Enxame</label>
+            <select name="data.tipoEnxame" class="tipo-enxame">
+              <option value="">-- Escolha um tipo --</option>
+              <option value="infectado" {{#if (eq actor.system.tipo "infectado" )}}selected{{/if}}>Infectado - Profeta
+                do Enxame</option>
+              <option value="soldado" {{#if (eq actor.system.tipo "soldado" )}}selected{{/if}}>Soldado - Sombra do Véu
+                Ruído</option>
+              <option value="gestalt" {{#if (eq actor.system.tipo "gestalt" )}}selected{{/if}}>Gestalt - O Amálgama
+                Andante</option>
+              <option value="estrategista" {{#if (eq actor.system.tipo "estrategista" )}}selected{{/if}}>O Estrategista
+                - A Boca da Consciência</option>
+              <option value="ciclope" {{#if (eq actor.system.tipo "ciclope" )}}selected{{/if}}>O Ciclope Esquizóide - O
+                Olho Que Devora</option>
+            </select>
+          </div>
+        </div>
+        <div class="trauma-bar">
+          <progress value="{{ actor.system.traumas.value}}" max="{{ actor.system.traumas.max}}"></progress>
+          <span style="min-height: 240px;color:antiquewhite;">
+            {{ actor.system.traumas.value}} / {{ actor.system.traumas.max}}</span>
+        </div>
+        <button type="button" class="trauma-reduce">Reduzir Trauma</button>
+      </div>
+
+    </div>
+    <div class="headerInclude" style="flex-direction: column;">
+      <div class="header">
+        <div id="moves" class="moves">
+          <h2>Movimentos do Enxame</h2>
+          <button class="botao-movimento-enxame" data-tipo="soldado"
+            style="margin:20px;position: initial;width: 130px;align-self: center;">Movimento do Enxame</button>
+          <div class="movimentosEnxame" style="
+    min-height: 240px;color:antiquewhite;
+"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</form>

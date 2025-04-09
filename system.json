@@ -2,7 +2,8 @@
   "id": "edvo",
   "title": "Ecos das Verdades Ocultas",
   "description": "Uma experiência de RPG que explora as profundezas da Magia, do horror e dos medos pessoais.",
-  "version": "0.9.5.6",
+  "background": "systems/edvo/assets/imgs/thumbnail.png",
+  "version": "0.9.5.7",
   "authors": [
     {
       "name": "Rodrigo \"Arka\" Gonçalves",
@@ -15,7 +16,8 @@
   },
   "scripts": [
     "scripts/edvo.js",
-    "scripts/actor-sheet.js"
+    "scripts/actor-sheet.js",
+    "scripts/colmeia-sheet.js"
   ],
   "styles": [
     "styles/edvo.css"
@@ -29,9 +31,10 @@
       "path": "lang/pt.json"
     }
   ],
+  "primaryTokenAttribute": "trauma",
   "url": "https://github.com/rodrigoarka/edvo",
   "manifest": "https://raw.githubusercontent.com/rodrigoarka/edvo/main/system.json",
-  "download": "https://github.com/rodrigoarka/edvo/archive/refs/tags/edvo-0.9.5.6.zip",
+  "download": "https://github.com/rodrigoarka/edvo/archive/refs/tags/edvo-0.9.5.7.zip",
   "bugs": "https://github.com/rodrigoarka/edvo/issues",
   "license": "LICENSE"
 }

@@ -66,8 +66,24 @@ Hooks.once("init", () => {
     return parseInt(value) + 1;
   });
 
+  Handlebars.registerHelper("resultadoRolagem", function (total) {
+    if (total >= 10) return "Sucesso total";
+    if (total >= 7) return "Sucesso parcial";
+    return "Fracasso";
+  });
+
+  CONFIG.Combat.initiative = {
+    formula: "2d6 + @atributos.tempus",
+    decimals: 0,
+  };
+
   Actors.registerSheet("edvo", CustomActorSheet, {
     types: ["character"],
+    makeDefault: true,
+  });
+
+  Actors.registerSheet("edvo", CustomColmeiaSheet, {
+    types: ["colmeia"],
     makeDefault: true,
   });
 

@@ -1,5 +1,21 @@
 class CustomActorSheet extends ActorSheet {
-  // Define o template HTML da ficha
+  prepareData() {
+    super.prepareData();
+
+    const system = this.system;
+    if (this.prototypeToken) {
+      this.actor.prototypeToken.bar1 = { attribute: "system.traumasCount" };
+      this.actor.prototypeToken.displayBars = CONST.TOKEN_DISPLAY_MODES.ALWAYS;
+    }
+    // Exemplo: calcular iniciativa baseada em atributo (caso deseje)
+    // system.initiative = system.mens || 0;
+
+    // Ou garantir que pelo menos tenha alguma estrutura
+    if (!system.initiative) {
+      system.initiative = { formula: "1d6" };
+    }
+  }
+
   get template() {
     return "systems/edvo/templates/actor-sheet.hbs"; // Atualize o caminho para refletir a localização correta!
   }
@@ -562,6 +578,7 @@ class CustomActorSheet extends ActorSheet {
           },
           desejos: desejos,
           traumas: traumas,
+          traumasCount: traumas.length,
           penalty: penalty, // Armazena a penalidade para uso posterior
           mecanicas: {
             desejo: formData.get("desejos").split("\n"),
@@ -748,6 +765,7 @@ class CustomActorSheet extends ActorSheet {
           bio: formData.get("bio"),
           desejos: desejos,
           penalty: penalty, // Armazena a penalidade para uso posterior
+          traumasCount: traumas.length,
           mecanicas: {
             limitacoes: formData.get("limitacoes").split("\n"),
             conexõesImportantes: formData.get("conexoes").split("\n"),
@@ -759,6 +777,10 @@ class CustomActorSheet extends ActorSheet {
       // Atualize os dados do ator
       try {
         await this.actor.update(actorData); // Atualiza o ator
+        this.actor.update({
+          "prototypeToken.bar1.attribute": "traumasCount",
+          "prototypeToken.displayBars": 50,
+        });
         console.log("EdVO | Dados salvos com sucesso!", actorData);
       } catch (error) {
         console.error("EdVO | Erro ao salvar os dados:", error);

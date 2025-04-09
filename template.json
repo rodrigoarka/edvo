@@ -1,10 +1,14 @@
 {
     "Actor": {
         "types": [
-            "character"
+            "character",
+            "enemy",
+            "colmeia"
         ],
         "templates": {
-            "character": "templates/actors/character.json"
+            "character": "templates/actors/character.json",
+            "enemy": "templates/actors/enemy.json",
+            "colmeia": "templates/actors/colmeia.json"
         }
     }
 }
